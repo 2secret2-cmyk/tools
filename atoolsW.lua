@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "6.2"
+VERSION_SCRIPT = "6.3"
 DEBUG = false
 AUTH = true
 SPAWNED = false
