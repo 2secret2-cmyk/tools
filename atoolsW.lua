@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "1.4"
+VERSION_SCRIPT = "1.4.1"
 DEBUG = false
 AUTH = true
 SPAWNED = false
@@ -5156,7 +5156,7 @@ end, function(arg_1_0)
 						imgui.Separator()
 					end
 				end
-			elseif current_tab_editor2 == "Шаблон" then
+			elseif current_tab_editor2 == "Шаблонные фразы" then
 				if #cfg.templates_arep < LIMITS.TEMPLATE_AREP then
 					if imgui.Button(u8("Добавить \"Шаблонную фразу\""), ImVec2(-1, 0)) then
 						table.insert(cfg.templates_arep, {
@@ -5195,12 +5195,12 @@ end, function(arg_1_0)
 			elseif current_tab_editor2 == "Кнопки" then
 				local var_1_50 = {
 					{
-						name = "Спек",
+						name = "Начать слежку за игроком",
 						default = defaultConfig.buttons_arep.buf_spec,
 						buf = cfg.buttons_arep.buf_spec,
 					},
 					{
-						name = "ТП к игроку",
+						name = "Вы телепортируетесь к игроку",
 						default = defaultConfig.buttons_arep.buf_goto,
 						buf = cfg.buttons_arep.buf_goto,
 					},
