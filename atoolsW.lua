@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "1.1"
+VERSION_SCRIPT = "1.2"
 DEBUG = false
 AUTH = true
 SPAWNED = false
@@ -5242,7 +5242,7 @@ end, function(arg_1_0)
 		local var_1_52 = getNAuto(30, 15)
 
 		if imgui.Button(u8("Сообщить о проблеме"), ImVec2(var_1_51.x - 20, var_1_52)) then
-			os.execute("explorer https://vk.com/tony.capone")
+			os.execute("explorer https://forms.gle/BZvFexrsGgutYGCa9")
 		end
 
 		imgui.Hint("REPORT_PROBLEM_HINT", u8("Если возникли вопросы/проблемы по скрипту."))
