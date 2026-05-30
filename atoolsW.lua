@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "1.2"
+VERSION_SCRIPT = "1.3"
 DEBUG = false
 AUTH = true
 SPAWNED = false
@@ -1641,7 +1641,7 @@ ipScript = {
 	"80.66.82.29:5125",
 	"80.66.82.28:5125",
 }
-logScript = "Есть вопрос? Нет вопроса.\nDiscord: net\n"
+logScript = "Есть вопрос? Свяжитесь в дискорде.\nDiscord: mikhail_wolkov\n"
 IP_CONNECTIONS = {}
 
 local var_0_17 = getWorkingDirectory() .. "\\config\\atools\\"
