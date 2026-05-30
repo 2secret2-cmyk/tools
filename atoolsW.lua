@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "1.3"
+VERSION_SCRIPT = "1.4"
 DEBUG = false
 AUTH = true
 SPAWNED = false
@@ -5329,7 +5329,7 @@ end, function(arg_1_0)
 		end
 
 		imgui.EndChild()
-	elseif current_tab == "ЛОГ" then
+	elseif current_tab == "Логи" then
 		imgui.ToggleButton(u8("Общий чат лог всего чата"), var.logs.chat)
 		imgui.Question("logs_chat", u8("Постоянно логирует общий чат."))
 		imgui.SameLine()
@@ -5484,7 +5484,7 @@ end, function(arg_1_0)
 			end
 		else
 			imgui.StrCopy(bufferLogsSearch, "")
-		end
+                end
 	elseif current_tab == "Заметки" then
 		imgui.BeginChild("##rules", ImVec2(getNAuto(101), -1), false)
 
