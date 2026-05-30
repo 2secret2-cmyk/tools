@@ -3,149 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Музыкальный Проект</title>
+    <title>Панель управления</title>
     <style>
-        :root {
-            --bg-color: #121212;
-            --surface-color: #1e1e1e;
-            --accent-color: #1db954;
-            --text-main: #ffffff;
-            --text-muted: #a7a7a7;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
             padding: 20px;
-        }
-
-        header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background: linear-gradient(180deg, #282828 0%, var(--bg-color) 100%);
-            border-radius: 12px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
+        h1 {
+            color: #1db954;
+            margin-top: 40px;
         }
 
-        header p {
-            color: var(--accent-color);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        p {
+            color: #aaaaaa;
             margin-bottom: 40px;
         }
 
-        .card {
-            background-color: var(--surface-color);
-            padding: 25px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #2a2a2a;
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            border-color: var(--accent-color);
+        .card {
+            background-color: #242424;
+            padding: 20px;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         .card h3 {
-            margin-bottom: 15px;
-            color: var(--text-main);
-            font-size: 1.4rem;
+            margin-top: 0;
+            color: #ffffff;
         }
 
         .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 14px;
+            color: #888888;
+            margin-bottom: 20px;
+            height: 40px;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 10px 20px;
+            background-color: #1db954;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 4px;
             font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.2s ease;
         }
 
         .btn:hover {
-            background-color: #1ed760;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid #2a2a2a;
-            margin-top: 40px;
+            background-color: #1aa34a;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Добро пожаловать в проект</h1>
-        <p>Lua & Audio Dashboard</p>
-    </header>
+    <h1>Музыкальный проект</h1>
+    <p>Локальная панель управления файлами и скриптами</p>
 
     <div class="container">
-        <div class="grid">
-            <!-- Карточка 1 -->
-            <div class="card">
-                <h3>🎵 Библиотека песен</h3>
-                <p>Управление аудиофайлами и плейлистами. Все треки синхронизированы и готовы к обработке скриптами.</p>
-                <a href="#" class="btn">Открыть песни</a>
-            </div>
 
-            <!-- Карточка 2 -->
-            <div class="card">
-                <h3>⚙️ Lua Инструменты</h3>
-                <p>Конфигурация системы через `atoolsW.lua`. Автоматизация процессов и кастомизация логики приложения.</p>
-                <a href="#" class="btn">Настройки Lua</a>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="card">
-                <h3>📊 Информация (JSON)</h3>
-                <p>Метаданные проекта, статусы и текущие параметры конфигурации, загруженные из `info.json`.</p>
-                <a href="#" class="btn">Посмотреть лог</a>
-            </div>
+        <!-- Кнопка для папки песен -->
+        <div class="card">
+            <h3>Песни</h3>
+            <p>Перейти к аудиофайлам в папке songs</p>
+            <a href="songs/" class="btn">Открыть</a>
         </div>
-    </div>
 
-    <footer>
-        <p>&copy; 2026 Музыкальный Скрипт-Проект. Лицензия MIT.</p>
-    </footer>
+        <!-- Кнопка для Lua скрипта -->
+        <div class="card">
+            <h3>Скрипт Lua</h3>
+            <p>Просмотр настроек файла atoolsW.lua</p>
+            <a href="atoolsW.lua" class="btn">Открыть</a>
+        </div>
+
+        <!-- Кнопка для JSON данных -->
+        <div class="card">
+            <h3>Информация</h3>
+            <p>Просмотр данных из info.json</p>
+            <a href="info.json" class="btn">Открыть</a>
+        </div>
+
+    </div>
 
 </body>
 </html>
