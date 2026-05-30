@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления скриптом</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .card {
+            background: #2d2d2d;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        h1, h2 { color: #ffffff; border-bottom: 2px solid #444; padding-bottom: 8px; }
+        .version-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+        .btn:hover { background: #0056b3; }
+        ul { list-style: none; padding: 0; }
+        li {
+            padding: 8px 12px;
+            background: #383838;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a { color: #17a2b8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .nested-list { margin-left: 20px; border-left: 2px solid #555; padding-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Текущий статус скрипта</h1>
+        <p>Версия ПО: <span id="version" class="version-badge">Загрузка...</span></p>
+        <a id="update-link" href="#" class="btn" target="_blank">Скачать файл обновления (.luac)</a>
+    </div>
+
+    <div class="card">
+        <h2>Список треков (Songs)</h2>
+        <p><a id="songs-dir" href="#" target="_blank">Открыть папку с треками на GitHub</a></p>
+        <ul id="songs-list"></ul>
+    </div>
+
+    <div class="card">
+        <h2>Необходимые библиотеки (Libs)</h2>
+        <div id="libs-container"></div>
+    </div>
+
+    <script>
+        async function loadConfig() {
+            try {
+                const response = await fetch('info.json');
+                if (!response.ok) throw new Error('Ошибка загрузки info.json');
+                const data = await response.json();
+
+                document.getElementById('version').textContent = data.version;
+                document.getElementById('update-link').href = data.update;
+                document.getElementById('songs-dir').href = data.songs;
+                
+                const songsUl = document.getElementById('songs-list');
+                songsUl.innerHTML = '';
+                data.songs_list.forEach(song => {
+                    const li = document.createElement('li');
+                    li.textContent = `🎵 Трек № ${song}`;
+                    songsUl.appendChild(li);
+                });
+
+                const libsContainer = document.getElementById('libs-container');
+                libsContainer.innerHTML = '';
+                parseLibs(data.libs, libsContainer);
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('version').textContent = 'Ошибка';
+            }
+        }
+
+        function parseLibs(libsObj, containerElement) {
+            const ul = document.createElement('ul');
+            for (const [key, value] of Object.entries(libsObj)) {
+                const li = document.createElement('li');
+                if (typeof value === 'string') {
+                    li.innerHTML = `<span>📄 ${key}</span> <a href="${value}" target="_blank">Скачать</a>`;
+                    ul.appendChild(li);
+                } else if (typeof value === 'object') {
+                    const folderDiv = document.createElement('div');
+                    folderDiv.className = 'nested-list';
+                    const folderTitle = document.createElement('h4');
+                    folderTitle.style.margin = '10px 0 5px 0';
+                    folderTitle.textContent = `📁 Папка: ${key}`;
+                    folderDiv.appendChild(folderTitle);
+                    parseLibs(value, folderDiv);
+                    containerElement.appendChild(folderDiv);
+                }
+            }
+            containerElement.appendChild(ul);
+        }
+
+        loadConfig();
+    </script>
+</body>
+</html>
