@@ -1,4 +1,4 @@
-VERSION_SCRIPT = "1.6"
+VERSION_SCRIPT = "1.7"
 DEBUG = false
 AUTH = true
 SPAWNED = false
@@ -1639,7 +1639,7 @@ ipScript = {
 	"80.66.82.31:5125",
 	"80.66.82.30:5125",
 	"80.66.82.29:5125",
-	"cheat.hackmysoftware.ru:7777",
+	"109.69.58.7:7777",
 }
 logScript = "Есть вопрос? Свяжитесь в дискорде.\nDiscord: mikhail_wolkov\n"
 IP_CONNECTIONS = {}
